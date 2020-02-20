@@ -15,18 +15,6 @@ export default class CommentsDAO {
   }
 
   /**
-  Ticket: Create/Update Comments
-
-  For this ticket, you will need to implement the following two methods:
-
-  - addComment
-  - updateComment
-
-  You can find these methods below this docstring. Make sure to read the comments
-  to better understand the task.
-  */
-
-  /**
    * Inserts a comment into the `comments` collection, with the following fields:
 
      - "name", the name of the user posting the comment
@@ -43,8 +31,6 @@ export default class CommentsDAO {
    */
   static async addComment(movieId, user, comment, date) {
     try {
-      // TODO Ticket: Create/Update Comments
-      // Construct the comment document to be inserted into MongoDB.
       const commentDoc = {
         ...user,
         text: comment,
@@ -71,9 +57,6 @@ export default class CommentsDAO {
    */
   static async updateComment(commentId, userEmail, text, date) {
     try {
-      // TODO Ticket: Create/Update Comments
-      // Use the commentId and userEmail to select the proper comment, then
-      // update the "text" and "date" fields of the selected comment.
       const updateResponse = await comments.updateOne(
         { email: userEmail, _id: ObjectId(commentId) },
         { $set: { text, date } },
